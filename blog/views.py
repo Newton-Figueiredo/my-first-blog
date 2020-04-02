@@ -1,9 +1,10 @@
-from django.shortcuts import render
+import datetime
+
 from django.utils import timezone
-from .models import Post
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
+
 from .forms import PostForm
-from django.shortcuts import redirect
+from .models import Post
 
 
 def post_list(request):
