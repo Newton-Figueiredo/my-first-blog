@@ -20,4 +20,4 @@ class Post(models.Model):
         return self.title
 
     def get_tag_list(self):
-        return re.split(" ", self.tags)
+        return self.tag.split(",")

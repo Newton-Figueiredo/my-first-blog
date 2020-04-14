@@ -46,10 +46,9 @@ def post_edit(request, pk):
 def post_tags(request,tag):
     all=Post.objects.all()
     posts=[]
-    tex=post.tag
-    for post in Post:
-        tags = re.split(",",tex)
-        if tag in all:
-            posts.append(post)
-    return render('blog/post_list.html')
+    tex=Post.tag
+    for post in all:
+        if tag in tex:
+            posts.append(tag)
+    return render(render,'blog/post_list.html')
     
