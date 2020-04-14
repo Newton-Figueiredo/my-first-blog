@@ -1,7 +1,7 @@
 import datetime
 
 from django.utils import timezone
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404, redirect, render_to_response
 
 from .forms import PostForm
 from .models import Post
@@ -41,3 +41,15 @@ def post_edit(request, pk):
      else:
          form = PostForm(instance=post)
      return render(request, 'blog/post_edit.html', {'form': form})
+
+
+def post_tags(request,tag):
+    all=Post.objects.all()
+    posts=[]
+    tex=post.tag
+    for post in Post:
+        tags = re.split(",",tex)
+        if tag in all:
+            posts.append(post)
+    return render('blog/post_list.html')
+    

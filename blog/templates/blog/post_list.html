@@ -5,11 +5,17 @@
                     		<h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h2>
                     		<div class="date">
 								<p> Autor: {{ post.author }} | publicado: {{ post.published_date }}</p>
-								<p>Tag: {{ post.tag}} </p>
+								<p>Tags:
+									{% for tag in post.tag %}
+                                      <a href="/blog/tag/{{ tag }}/">{{ tag }}</a>{% if not forloop.last %}, {% endif %}
+                                    {% endfor %}
+								</p>
                     		</div>
                     		<div class="text-content">
                     		<p align="justify" >{{ post.text|linebreaksbr|truncatewords:150 }}</p>
                     		</div>
-                		</div>
-            		{% endfor %}
+						</div>
+						
+					{% endfor %}
+					
             	{% endblock %}
